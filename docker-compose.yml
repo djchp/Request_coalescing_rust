@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  scylla:
+    image: scylladb/scylla
+    mem_limit: 4g
+    ports:
+      - '9042:9042'
+    volumes:
+      - type: volume
+        source: target
+        target: /var/lib/scylla
+        volume:
+          nocopy: true
+    command: --smp 2  --memory 2G
+
+volumes:
+  target:
